@@ -89,7 +89,7 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent),
                         onPressed: () {
-                          _pickImageFromGallery();
+                          _pickImage(ImageSource.gallery);
                         },
                         icon: Icon(Icons.image),
                         label: Text("GALLERY")),
@@ -97,7 +97,7 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent),
                         onPressed: () {
-                          _pickImageFromCam();
+                          _pickImage(ImageSource.camera);
                         },
                         icon: Icon(Icons.camera_alt),
                         label: Text("CAMERA")),
@@ -248,7 +248,7 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
                       backgroundColor: Colors.lightBlue,
                       onPressed: () {
                         _formKey.currentState!.validate();
-                        onAddStudentButtonClicked();
+                         onAddStudentButtonClicked();
                       },
                       child: Icon(Icons.add),
                     ),
@@ -285,9 +285,9 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
     Navigator.of(context).pop();
   }
 
-  Future _pickImageFromGallery() async {
+  Future _pickImage(ImageSource source) async {
     final returnImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+        await ImagePicker().pickImage(source: source);
 
     if (returnImage == null) {
       return;
@@ -298,18 +298,18 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
     });
   }
 
-  _pickImageFromCam() async {
-    final returnImage =
-        await ImagePicker().pickImage(source: ImageSource.camera);
+  // _pickImageFromCam() async {
+  //   final returnImage =
+  //       await ImagePicker().pickImage(source: ImageSource.camera);
 
-    if (returnImage == null) {
-      return;
-    }
+  //   if (returnImage == null) {
+  //     return;
+  //   }
 
-    setState(() {
-      _selectedImage = File(returnImage.path);
-    });
-  }
+  //   setState(() {
+  //     _selectedImage = File(returnImage.path);
+  //   });
+  // }
 
   void _refreshScreen() {
     _nameController.clear();

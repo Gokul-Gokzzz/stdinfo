@@ -20,11 +20,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Flutter Demo",
-      theme: ThemeData(),
-      home: ListStudentWidget(),
-      debugShowCheckedModeBanner: false,
+    return SafeArea(
+      child: MaterialApp(
+        title: "Flutter Demo",
+        theme: ThemeData(),
+        home: ListStudentWidget(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
